@@ -5,6 +5,8 @@ class FlightsController < ApplicationController
       @code = params[:search][:code].upcase
       @from = params[:search][:from_airport_id]
       @to = params[:search][:to_airport_id]
+      @from_airport = Airport.find_by(id: @from)
+      @to_airport = Airport.find_by(id: @to)
       if params[:search][:date] != ''
         @flights = Flight.where("cast(date as DATE) = ? ", params[:search][:date] )
       else

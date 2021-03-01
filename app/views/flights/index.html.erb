@@ -1,3 +1,4 @@
+<p><%= link_to "Home", root_path %></p>
 <h2 id="main-title">
   Find flight:
 </h2>
@@ -13,6 +14,11 @@
 </div>
 
 <h2>Available flights:</h2>
+
+<% if @flights.length == 0 %>
+  <p>There is no scheduled flights between <%= @from_airport.name %> and <%= @to_airport.name %> yet.</p>
+<% end %>
+
 <% @flights.each do |flight| %>
   <div class="flight">
     <strong>Flight code:</strong> <%= flight.code %> |

@@ -16,6 +16,13 @@
 * {
   font-family: 'Exo', sans-serif;
 }
+a {
+  text-decoration: none;
+  color: #2868ff;
+}
+a:hover {
+  color: #2868ff;
+}
 body {
   margin: 0;
   width: 100%;
