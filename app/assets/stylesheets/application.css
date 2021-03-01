@@ -50,8 +50,13 @@ body {
   margin-top: 10px;
   border: 1px solid rgba(109, 109, 109, 0.171);
 }
-
 .flight {
   font-size: 18px;
   margin: 15px 0 0 15px;
+}
+fieldset {
+  margin-bottom: 20px;
+}
+#form {
+  margin-left: 20px;
 }

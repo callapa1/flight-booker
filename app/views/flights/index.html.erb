@@ -27,7 +27,8 @@
     Date: <%= flight.date.to_formatted_s(:long)  %>
     <% if params[:search].present? %>
       <%= simple_form_for @booking, url: new_booking_path, method: "GET" do |f| %>
-        <%= f.hidden_field :flight_id, value: flight.id %> <%= f.input :seats, collection: 1..4, wrapper: false %>
+        <%= f.hidden_field :flight_id, value: flight.id %> 
+        <%= f.input :seats, collection: 1..4, wrapper: false, selected: 1 %>
         <%= f.submit "Proceed", :name => nil %>
       <% end %>
     <% end %>

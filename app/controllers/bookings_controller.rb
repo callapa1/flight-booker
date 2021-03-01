@@ -10,6 +10,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = @@hold
+
+    if @booking.seats > 4
+      return redirect_to root_path
+    end
+
     @booking.seats.times do |i|
       @booking.passengers.build(name: params[:booking][:passengers_attributes]["#{i}"][:name], email: params[:booking][:passengers_attributes]["#{i}"][:email])
     end
@@ -18,12 +23,11 @@ class BookingsController < ApplicationController
     @booking.passengers.first.delete
 
     if @booking.save
+      @booking.passengers.each do |passenger|
+        BookingMailer.booking_confirmation(passenger).deliver
+      end
       # Even if I clean the information, the 'slot' is still there (empty) and it has no id
       # so it needs to be skipped. This is not the best solution but it works
-      @booking.passengers.each_with_index do |passenger, i|
-        next if (passenger.id == nil)
-        PassengerMailer.thank_you_email(passenger).deliver_later
-      end
       redirect_to @booking
     else
       render :new

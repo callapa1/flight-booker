@@ -1,23 +1,25 @@
-<strong>FLIGHT CODE:</strong> <%= @booking.flight.code %> <br>
-<strong>SEATS:</strong> <%= @booking.seats %> <br>
-<strong>FROM:</strong> <%= @booking.flight.from_airport.name %> <br>
-<strong>TO:</strong> <%= @booking.flight.to_airport.name %> <br>
-<strong>DATE:</strong> <%= @booking.flight.date %> <br>
-<strong>DURATION:</strong> <%= @booking.flight.duration %> minutes
-<br><br>
+<fieldset>
+  <legend>Flight Information</legend>
+  <strong>FLIGHT CODE:</strong> <%= @booking.flight.code %> <br>
+  <strong>SEATS:</strong> <%= @booking.seats %> <br>
+  <strong>FROM:</strong> <%= @booking.flight.from_airport.name %> <br>
+  <strong>TO:</strong> <%= @booking.flight.to_airport.name %> <br>
+  <strong>DATE:</strong> <%= @booking.flight.date.to_s(:rfc822) %> <br>
+  <strong>DURATION:</strong> <%= @booking.flight.duration %> minutes
+</fieldset>
 
-
-<%= simple_form_for @booking, url: bookings_path, method: "POST" do |f| %>
-  
-  <% 1.upto(@booking.seats) do |passenger| %>
-    <%= f.simple_fields_for :passengers do |passenger_builder| %>
-      Passenger <%= passenger %>
-      <%= passenger_builder.input :name %>
-      <%= passenger_builder.input :email %>
-      <br>
+<div id="form">
+  <%= simple_form_for @booking, url: bookings_path, method: "POST" do |f| %>
+    <% 1.upto(@booking.seats) do |passenger| %>
+      <%= f.simple_fields_for :passengers do |passenger_builder| %>
+        Passenger <%= passenger %>
+        <%= passenger_builder.input :name, input_html: { onblur: "validate()", class:'passenger-input' } %>
+        <%= passenger_builder.input :email, input_html: { onblur: "validate()", class:'passenger-input' } %>
+        <br>
+      <% end %>
     <% end %>
+
+    <%= f.submit "Book this flight", id: "submit-booking", disabled: true %>
+
   <% end %>
-
-  <%= f.submit "Book this flight bih'"%>
-
-<% end %>
+<div>
