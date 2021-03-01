@@ -23,7 +23,8 @@ class BookingsController < ApplicationController
     @booking.passengers.first.delete
 
     if @booking.save
-      @booking.passengers.each do |passenger|
+      @booking.passengers.each_with_index do |passenger, index|
+        next if index == 0
         BookingMailer.booking_confirmation(passenger).deliver
       end
       # Even if I clean the information, the 'slot' is still there (empty) and it has no id
