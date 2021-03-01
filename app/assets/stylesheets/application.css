@@ -12,4 +12,39 @@
  *
  *= require_tree .
  *= require_self
- */
+*/
+* {
+  font-family: 'Exo', sans-serif;
+}
+body {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  background-color: #2868ff;
+}
+#container {
+  margin: 50px auto 0;
+  width: 80%;
+  background-color: rgb(255, 253, 245);
+  padding: 20px
+}
+#main-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+#search-input {
+  border-radius: 5px;
+  margin-left: 15px;
+  border: 1px solid rgb(197, 197, 197);
+}
+#separator {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid rgba(109, 109, 109, 0.171);
+}
+
+.flight {
+  font-size: 18px;
+  margin: 15px 0 0 15px;
+}

@@ -1,24 +1,29 @@
-<h2><strong>Find flight:</strong></h2>
-<%= simple_form_for :search, url: flights_path, method: "GET" do |f| %>
-  <%= f.input :code, input_html: {value: ""} %>  
-  <%= f.collection_select :from_airport_id, Airport.all, :id, :name %>
-  <%= f.collection_select :to_airport_id, Airport.all, :id, :name %>
-  <%= f.datetime_field :date %>
-  <%= f.submit "Search", :name => nil %>
-<% end %>
-<hr>
-
-<h2>Flights:</h2>
-<% @flights.each do |flight| %>
-  <strong>Code:</strong> <%= flight.code %> |
-  <strong>FROM:</strong> <%= flight.from_airport.name %>
-  <strong>TO:</strong> <%= flight.to_airport.name %> | 
-  Date: <%= flight.date %>
-  <% if params[:search].present? %>
-    <%= simple_form_for @booking, url: new_booking_path, method: "GET" do |f| %>
-      <%= f.hidden_field :flight_id, value: flight.id %> <%= f.input :seats, collection: 1..4, wrapper: false %>
-      <%= f.submit "Proceed", :name => nil %>
-    <% end %>
+<h2 id="main-title">
+  Find flight:
+</h2>
+<div id="search-flight">
+  <%= simple_form_for :search, url: flights_path, method: "GET" do |f| %>
+    <p><%= f.input :code, input_html: {value: "", id: 'search-input'}, required: false %> </p> 
+    <%= f.collection_select :from_airport_id, Airport.all, :id, :name %>
+    <%= f.collection_select :to_airport_id, Airport.all, :id, :name %>
+    <%= f.date_field :date %>
+    <%= f.submit "Search", :name => nil %>
   <% end %>
-  <hr>
+  <div id="separator"></div>
+</div>
+
+<h2>Available flights:</h2>
+<% @flights.each do |flight| %>
+  <div class="flight">
+    <strong>Flight code:</strong> <%= flight.code %> |
+    <strong>FROM:</strong> <%= flight.from_airport.name %>
+    <strong>TO:</strong> <%= flight.to_airport.name %> | 
+    Date: <%= flight.date.to_formatted_s(:long)  %>
+    <% if params[:search].present? %>
+      <%= simple_form_for @booking, url: new_booking_path, method: "GET" do |f| %>
+        <%= f.hidden_field :flight_id, value: flight.id %> <%= f.input :seats, collection: 1..4, wrapper: false %>
+        <%= f.submit "Proceed", :name => nil %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
