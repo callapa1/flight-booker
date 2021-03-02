@@ -46,9 +46,6 @@ Rails.application.configure do
     user_name: ENV['GOOGLE_FLIGHT_USERNAME'],
     password: ENV['GOOGLE_FLIGHT_PASSWORD']
   }
-
-  config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

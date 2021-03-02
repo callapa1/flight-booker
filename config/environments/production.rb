@@ -97,6 +97,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  host: 'herokuapp.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
@@ -108,7 +109,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'tranquil-chamber-45428.herokuapp.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
