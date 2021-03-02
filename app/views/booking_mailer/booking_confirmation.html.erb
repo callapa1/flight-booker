@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,500;0,700;0,800;1,500;1,800&display=swap" rel="stylesheet">
+    <style>
+      * { font-family: 'Exo', sans-serif; }
+      body {
+        background-color: #2868ff;
+      }
+      #container {
+        background-color: white;
+      }
+      #credit {
+        font-size: 8px;
+          color: grey;
+      }
+      .email {
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Welcome to flight-booker, <%= @passenger.name %></h1>
+      <p>
+        You have successfully booked your flight ticket on <strong><%= @passenger.booking.flight.date %></strong>
+        from <%= @passenger.booking.flight.from_airport.name %> to <%= @passenger.booking.flight.to_airport.name %>.
+        Please be at the airport at least 4 hours before the departing time to prevent any delays. 
+        We also recommend checking the current <i><a href="https://www.kayak.com/travel-restrictions">COVID restrictions 
+        and security measurements</a></i> in order to keep everyone safe.</p>
+      <p> Your flight code is <strong><%= @passenger.booking.flight.code %></strong></p>
+      <p> And your reservation ID is <strong><%= @passenger.booking_id %></strong>, keep it close as you will need it 
+      at the boarding gates.</p>
+
+      <p>Thank you for trusting us and have a great day</p>
+          
+        <h3>This if the full list of passengers:</h3>
+        <% @passenger.booking.passengers.each_with_index do |passenger, index| %>
+          <% next if index == 0 %>
+          <p>Name: <%= passenger.name %>, email: <span class="email"><%= passenger.email %></span></p>
+        <% end %>
+
+      <p>Flight-booker</p>
+      <p id="credit"><a href="https://callapa1.github.io/portfolio/">By Cristian Lopez</a></p>
+    </div>
+  </body>
+</html>

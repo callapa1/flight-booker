@@ -37,15 +37,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   # Change mail delivery to either :smtp, :sendemail, :file, :test
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.mail.yahoo.com",
-  #   port: 587,
-  #   authentication: :login,
-  #   enable_starttls_auto: true,
-  #   user_name: ENV["YAHOO_USERNAME"],
-  #   password: ENV["YAHO_PASSWORD"]
-  # }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    authentication: :login,
+    enable_starttls_auto: true,
+    user_name: ENV['GOOGLE_FLIGHT_USERNAME'],
+    password: ENV['GOOGLE_FLIGHT_PASSWORD']
+  }
 
   config.action_mailer.perform_caching = false
 

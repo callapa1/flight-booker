@@ -1,2 +1,24 @@
-<%= @passenger.name %>,
-Thank you for booking with us.
+Welcome to flight-booker, <%= @passenger.name %>
+==============================================
+Welcome to flight-booker, <%= @passenger.name %>
+
+You have successfully booked your flight ticket on <%= @passenger.booking.flight.date %> 
+from <%= @passenger.booking.flight.from_airport.name %> to <%= @passenger.booking.flight.to_airport.name %>.
+Please be at the airport at least 4 hours before the departing time to prevent any delays. We also recommend checking 
+the current COVID restrictions and security measurements in order to keep everyone safe.
+Your flight code is <%= @passenger.booking.flight.code %>
+And your reservation ID is <%= @passenger.booking_id %>, keep it close as you will need it at the boarding gates.
+
+Thank you for trusting us and have a great day
+
+This if the full list of passengers:
+<% @passenger.booking.passengers.each_with_index do |passenger, index| %>
+  <% next if index == 0 %>
+  Name: <%= passenger.name %>, email: <%= passenger.email %>
+<% end %>
+
+
+------------------
+Flight-booker
+By Cristian Lopez
+------------------

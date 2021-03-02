@@ -105,8 +105,8 @@ Rails.application.configure do
     # domain: 'yahoo.com',
     authentication: :login,
     # enable_starttls_auto: true,
-    user_name: ENV['YAHOO_USERNAME'],
-    password: ENV['YAHOO_PASSWORD']
+    user_name: ENV['GOOGLE_FLIGHT_USERNAME'],
+    password: ENV['GOOGLE_FLIGHT_PASSWORD']
   }
 
   config.action_mailer.perform_deliveries = true
