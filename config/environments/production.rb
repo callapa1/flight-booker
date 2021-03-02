@@ -104,7 +104,7 @@ Rails.application.configure do
     domain:               'gmail.com',
     authentication:       'plain',
     user_name:            ENV['GOOGLE_FLIGHT_USERNAME'],
-    password:             ENV['GOOGLE_FLIGHT_PASSWORD']
+    password:             ENV['GOOGLE_FLIGHT_PASSWORD'],
     enable_starttls_auto: true,
   }
   
