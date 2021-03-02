@@ -1,5 +1,5 @@
 class BookingMailer < ApplicationMailer
-  default from: "lopezcallapa@gmail.com"
+  default from: "flightbooker.bycristianlopez@gmail.com"
 
   def booking_confirmation(passenger)
     @passenger = passenger
