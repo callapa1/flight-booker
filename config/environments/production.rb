@@ -99,17 +99,18 @@ Rails.application.configure do
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    authentication:       'plain',
-    user_name:            ENV['GOOGLE_FLIGHT_USERNAME'],
-    password:             ENV['GOOGLE_FLIGHT_PASSWORD'],
-    enable_starttls_auto: true,
+    address: 'smtp.mail.yahoo.com',
+    port: 587,
+    # domain: 'yahoo.com',
+    authentication: :login,
+    # enable_starttls_auto: true,
+    user_name: ENV['YAHOO_USERNAME'],
+    password: ENV['YAHOO_PASSWORD']
   }
   
-  config.action_mailer.default_url_options = { host: 'tranquil-chamber-45428.herokuapp.com' }
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'tranquil-chamber-45428.herokuapp.com', protocol: 'https' }
+
+  config.action_mailer.perform_deliveries = false
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
