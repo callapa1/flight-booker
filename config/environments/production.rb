@@ -99,12 +99,13 @@ Rails.application.configure do
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    authentication: :login,
-    # enable_starttls_auto: true,
-    user_name: ENV['GOOGLE_FLIGHT_USERNAME'],
-    password: ENV['GOOGLE_FLIGHT_PASSWORD']
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    authentication:       'plain',
+    user_name:            ENV['GOOGLE_FLIGHT_USERNAME'],
+    password:             ENV['GOOGLE_FLIGHT_PASSWORD']
+    enable_starttls_auto: true,
   }
   
   config.action_mailer.default_url_options = { host: 'tranquil-chamber-45428.herokuapp.com' }
