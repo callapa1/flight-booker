@@ -98,13 +98,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mail.yahoo.com',
+    address: "smtp.gmail.com",
     port: 587,
-    # domain: 'yahoo.com',
     authentication: :login,
-    # enable_starttls_auto: true,
+    enable_starttls_auto: true,
     user_name: ENV['GOOGLE_FLIGHT_USERNAME'],
     password: ENV['GOOGLE_FLIGHT_PASSWORD']
   }
