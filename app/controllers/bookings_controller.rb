@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
     if @booking.save
       @booking.passengers.each_with_index do |passenger, index|
         next if index == 0
-        BookingMailer.booking_confirmation(passenger).deliver
+        # BookingMailer.booking_confirmation(passenger).deliver
       end
       # Even if I clean the information, the 'slot' is still there (empty) and it has no id
       # so it needs to be skipped. This is not the best solution but it works
